@@ -1,6 +1,9 @@
 package fr.sportpourtous.domain;
+
+import java.util.Objects;
+
 public class User {
-    private int userId;
+    private UserId userId;
     private String firstName;
 
     private String lastName;
@@ -8,7 +11,7 @@ public class User {
     private String email;
     private String numberBankAccount;
 
-    public User(String firstName, String lastName, int age, String email, String password, String numberBankAccount ) {
+    public User(UserId userId, String firstName, String lastName, int age, String email, String password, String numberBankAccount ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -65,6 +68,18 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId);
     }
 
     @Override

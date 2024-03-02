@@ -27,7 +27,6 @@ class UserController {
         userList.add(new User("user3", "last3", 31, "user3@gmail.com", "87654321", "242343544562424"));
         userList.add(new User("user4", "last4", 32, "user4@gmail.com", "87654321", "242343544562424"));
         return userList;
-        //return userService.getAllUsers();
     }
 
 

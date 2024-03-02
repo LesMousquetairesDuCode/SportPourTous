@@ -1,17 +1,28 @@
 package fr.sportpourtous;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        var userRepository = new InMemoryUserRepository();
+        var bankAccountRepository = new InMemoryBankAccountRepository();
+
+        var userService = new UserService(userRepository);
+        var bankAccountService = new BankAccountService(bankAccountRepository);
+
+        var userController = new YourUserController(userService);
+        var bankAccountController = new YourBankAccountController(bankAccountService);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter your bank account to register:");
+        String bankAccount = scanner.nextLine();
+
+        var userId = userController.create(bankAccount);
+
+        System.out.println("User created with ID: " + userId);
+        var newUser = userRepository.findById(userId);
+
+        System.out.println("New registered user: " + newUser);
     }
 }

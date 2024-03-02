@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/bookings")
-public class BookingController {
+public class SessionController {
 
 //    private final BookingService bookingService; // Assuming a BookingService for business logic
 //
