@@ -1,7 +1,7 @@
 package fr.sportpourtous.domain;
 
 
-public class BankWithdrawalPayment extends Payment {
+public class PaymentWithdrawal extends Payment {
 
     private String name;
     private String address;

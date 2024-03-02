@@ -9,14 +9,12 @@ public class Main {
 
 
         var userRepository = new InMemoryUserRepository();
-        var bankAccountRepository = new InMemoryBankAccountRepository();
+        var paymentAccountRepository = new InMemoryPaymentAccountRepository();
 
         var userService = new UserService(userRepository);
-        var bankAccountService = new BankAccountService(bankAccountRepository);
+        var bankAccountService = new paymentService(paymentAccountRepository);
 
-        var userController = new YourUserController(userService);
-        var bankAccountController = new YourBankAccountController(bankAccountService);
-
+        var userController = new UserController(userService);
 
         var accountId1 = userController.create();
         var accountId2 = userController.create();
@@ -24,8 +22,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your bank account to register:");
         String bankAccount = scanner.nextLine();
-
-        var userId = userController.create(bankAccount);
 
         System.out.println("User created with ID: " + userId);
         var newUser = userRepository.findById(userId);

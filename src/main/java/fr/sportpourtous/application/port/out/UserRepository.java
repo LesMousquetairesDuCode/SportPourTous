@@ -1,8 +1,7 @@
-package fr.sportpourtous.application.port.out;
-
-
 import fr.sportpourtous.domain.User;
 import fr.sportpourtous.domain.UserId;
+
+import java.util.List;
 
 public interface UserRepository {
 
@@ -10,5 +9,9 @@ public interface UserRepository {
 
     User findById(UserId userId);
 
+    List<User> findAll(); // Retrieves all users
+
     void save(User user);
+
+    void remove(UserId userId); // Removes a user by their userId
 }

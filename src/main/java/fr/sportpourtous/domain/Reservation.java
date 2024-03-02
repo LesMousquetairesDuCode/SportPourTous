@@ -7,10 +7,6 @@ public class Reservation {
 
     private User user;
 
+    private SportSession session;
 
-    private Session session;
-
-    // more fields...
-
-    // getters, setters...
 }

@@ -1,4 +1,4 @@
 package fr.sportpourtous.application.port.out;
 
-public class CreateBookingPort {
+public interface EnterpriseRepository {
 }

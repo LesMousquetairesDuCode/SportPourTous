@@ -2,34 +2,29 @@ package fr.sportpourtous.adapter.out;
 
 package fr.gboissinot.al.account.step5.adapter.out;
 
-import fr.gboissinot.al.account.step5.application.port.out.AccountRepository;
-import fr.gboissinot.al.account.step5.domain.Account;
-import fr.gboissinot.al.account.step5.domain.AccountException;
-import fr.gboissinot.al.account.step5.domain.AccountId;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public final class InMemoryUserRepository implements AccountRepository {
+public final class InMemoryUserRepository implements UserRepository {
 
-    private final Map<AccountId, Account> registry = new HashMap<>();
+    private final Map<UserId, User> registry = new HashMap<>();
 
     @Override
-    public AccountId nextId() {
-        return AccountId.of(UUID.randomUUID());
+    public UserId nextId() {
+        return UserId.of(UUID.randomUUID());
     }
 
     @Override
-    public Account findById(AccountId accountId) {
+    public User findById(UserId accountId) {
         return registry.computeIfAbsent(accountId,
                 key -> {
-                    throw AccountException.notFoundAccountId(accountId);
+                  //  throw AccountException.notFoundAccountId(accountId);
                 });
     }
 
     @Override
-    public void save(Account account) {
-        registry.put(account.id(), account);
+    public void save(User user) {
+        registry.put(user.id(), user);
     }
 }
